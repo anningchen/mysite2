@@ -40,3 +40,9 @@ def orm(reqeust):
 
     print(data)
     return HttpResponse("hello")
+
+
+def depart_list(request):
+    """部门列表"""
+
+    return

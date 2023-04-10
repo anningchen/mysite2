@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 
 from app01.views import info_list, info_add, info_delete
+from app01 import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,4 +25,6 @@ urlpatterns = [
     path('info/list/', info_list),
     path('info/add/', info_add),
     path('info/delete/', info_delete),
+    path('depart/list/', views.depart_list),
+
 ]
