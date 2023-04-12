@@ -1,5 +1,6 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 
 from .models import UserInfo, Department
 
@@ -23,14 +24,15 @@ def info_add(request):
         username = request.POST.get("username")
         pwd = request.POST.get("password")
         age = request.POST.get("age")
-        UserInfo.objects.create(name=username,password=pwd,age=age)
+        UserInfo.objects.create(name=username, password=pwd, age=age)
         return redirect("/info/list/")
 
-def info_delete(request):
 
+def info_delete(request):
     id = request.GET.get('id')
     UserInfo.objects.filter(id=id).delete()
     return redirect("/info/list/")
+
 
 def orm(reqeust):
     data = UserInfo.objects.all()
@@ -45,4 +47,9 @@ def orm(reqeust):
 def depart_list(request):
     """部门列表"""
 
-    return
+    return render(request, "depart_list.html")
+
+
+@login_required(login_url='userprofile/login/')
+def index(request, ):
+    return render(request, "index.html")
