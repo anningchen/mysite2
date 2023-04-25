@@ -1,88 +1,38 @@
 {% load static %}
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="zh-cn">
+
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock title %}</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/js/tabler.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/css/tabler.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/css/tabler-flags.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/css/tabler-payments.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/css/tabler-vendors.min.css">
 
-    <meta name="renderer" content="webkit">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
 
-    <link rel="stylesheet" href="{% static 'dist/css/layui.css' %}" media="all">
-    <style>
-        /* 移动端 */
-        @media screen and (max-width: 768px) {
-            .layui-layout-admin .layui-layout-left,
-            .layui-layout-admin .layui-body,
-            .layui-layout-admin .layui-footer {
-                left: 0;
-            }
-
-            .layui-layout-admin .layui-side {
-                left: -300px;
-            }
-        }
-    </style>
-    <link id="layuicss-laydate" rel="stylesheet"
-          href="https://www.layuiweb.com/res/layui/dist/css/modules/laydate/default/laydate.css?v=5.3.1" media="all">
-    <link id="layuicss-layer" rel="stylesheet"
-          href="https://www.layuiweb.com/res/layui/dist/css/modules/layer/default/layer.css?v=3.5.1" media="all">
-    <link id="layuicss-skincodecss" rel="stylesheet"
-          href="https://www.layuiweb.com/res/layui/dist/css/modules/code.css?v=3" media="all">
-    <style>
-        #clip_copy, #web-copy-btn-wk {
-            background: #54aae9 !important
-        }
-    </style>
 </head>
-<body>
-
-<div class="layui-layout layui-layout-admin">
+<body class="theme-light">
+<div class="page">
+    {#引入导航栏#}
     {% include 'header.html' %}
-
-
-    {% block content %}{% endblock content %}
+    <div class="page-wrapper">
+        <div class="page-body">
+            <div class="container-xl">
+                <div class="row row-deck row-cards">
+                    {% block content %}{% endblock content %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {#引入注脚#}
     {% include 'footer.html' %}
-
 </div>
-<script src="{% static 'dist/layui.js' %}" charset="utf-8"></script>
-<script>
-    //JS
-    layui.use(['element', 'layer', 'util'], function () {
-        var element = layui.element
-            , layer = layui.layer
-            , util = layui.util
-            , $ = layui.$;
-
-        //头部事件
-        util.event('lay-header-event', {
-            //左侧菜单事件
-            menuLeft: function (othis) {
-                layer.msg('展开左侧菜单的操作', {icon: 0});
-            }
-            , menuRight: function () {
-                layer.open({
-                    type: 1
-                    , title: '更多'
-                    , content: '<div style="padding: 15px;">处理右侧面板的操作</div>'
-                    , area: ['260px', '100%']
-                    , offset: 'rt' //右上角
-                    , anim: 5
-                    , shadeClose: true
-                    , scrollbar: false
-                });
-            }
-        });
-
-    });
-</script>
 
 
 </body>
-
 </html>

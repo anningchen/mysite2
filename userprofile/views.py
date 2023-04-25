@@ -9,6 +9,7 @@ from .forms import UserLoginForm
 
 def user_login(request, ):
     if request.method == 'POST':
+        print(request.POST)
         user_login_form = UserLoginForm(data=request.POST)
         if user_login_form.is_valid():
             data = user_login_form.cleaned_data
@@ -17,7 +18,7 @@ def user_login(request, ):
 
             if user:
                 login(request, user)
-                return redirect("/info/list/")
+                return redirect("/security/list/")
             else:
                 return HttpResponse("账号或密码输入有误。请重新输入~")
         else:
@@ -32,4 +33,4 @@ def user_login(request, ):
 
 def user_logout(request, ):
     logout(request)
-    return redirect('/info/list/')
+    return redirect('/userprofile/login/')

@@ -29,5 +29,6 @@ urlpatterns = [
     path('index/', views.index),
     path('userprofile/', include(('userprofile.urls', 'userprofile'), namespace='userprofile')),
     path('report/', include(('report.urls', 'report'), namespace='report')),
+    path('security/', include(('security.urls', 'security'), namespace='security'))
 
 ]

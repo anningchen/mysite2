@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'app01',
     'userprofile',
     'report',
+    'security',
 ]
 
 MIDDLEWARE = [
